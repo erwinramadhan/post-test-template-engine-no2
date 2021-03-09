@@ -26,4 +26,13 @@ app.get('/news', (req, res)=>{
     })
 })
 
+app.get('/corona', (req, res) => {
+    const url = "https://api.kawalcorona.com/indonesia/provinsi/";
+    
+    axios.get(`${url}`)
+    .then(result => {
+        res.render("corona", { title: "Data Corona", corona: result.data})
+    })
+})
+
 app.listen(3030, ()=> console.log("Server Berjalan"))
